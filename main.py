@@ -4,20 +4,28 @@ from player import Player
 
 
 def main():
+    # group creation
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    Player.containers = (updatable, drawable)
+
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pygame.time.Clock()
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
     dt = 0
 
+    # game loop
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
 
         screen.fill("black")
-        player.update(0.1)
-        player.draw(screen)
+        for thing in updatable:
+            thing.update(0.1)
+        for thing in drawable:
+            player.draw(screen)
         pygame.display.flip()
 
         # limit the framerate to 60 FPS
