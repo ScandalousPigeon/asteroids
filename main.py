@@ -35,6 +35,9 @@ def main():
         screen.fill("black")
         for thing in updatable:
             thing.update(0.1)
+            if isinstance(thing, Player):
+                if thing.timer > 0:
+                    thing.timer -= 0.1
         for thing in drawable:
             thing.draw(screen)
         for asteroid in asteroids:
