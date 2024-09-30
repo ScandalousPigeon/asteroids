@@ -43,7 +43,7 @@ def main():
                 blasted = asteroid.check_collision(shot)
                 if blasted:
                     shot.kill()
-                    asteroid.kill()
+                    asteroid.split()
             if ded:
                 sys.exit("Game over!")
         pygame.display.flip()
