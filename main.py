@@ -39,6 +39,11 @@ def main():
             thing.draw(screen)
         for asteroid in asteroids:
             ded = asteroid.check_collision(player)
+            for shot in shots:
+                blasted = asteroid.check_collision(shot)
+                if blasted:
+                    shot.kill()
+                    asteroid.kill()
             if ded:
                 sys.exit("Game over!")
         pygame.display.flip()
