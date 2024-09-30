@@ -24,7 +24,7 @@ def main():
 
     asteroid_field = AsteroidField()
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
-    dt = 0
+    dt = 0.1
 
     # game loop
     while True:
@@ -34,10 +34,7 @@ def main():
 
         screen.fill("black")
         for thing in updatable:
-            thing.update(0.1)
-            if isinstance(thing, Player):
-                if thing.timer > 0:
-                    thing.timer -= 0.1
+            thing.update(dt)
         for thing in drawable:
             thing.draw(screen)
         for asteroid in asteroids:
